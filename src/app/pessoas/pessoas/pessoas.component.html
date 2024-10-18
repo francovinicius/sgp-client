@@ -1,14 +1,13 @@
-<div class="d-flex flex-column align-items-end flex-wrap gap-2 me-5">
   <div class="d-flex mt-5 gap-2">
-    <input type="text">
-    <button class="btn btn-sm  btn-dark"><a class="nav-link" href="/cadastro">Pesquisar</a></button>
+        <input type="text" placeholder="Pesquisar..." (input)="filtrarClientes($event)" class="ms-5 form-control"
+      style="max-width: 300px;" />
+      <button class=" btn btn-dark"><a class="nav-link" href="/cadastro">Novo Cadastro</a></button>
   </div>
 
-</div>
 
-<button class="ms-5 btn btn-dark"><a class="nav-link" href="/cadastro">Novo Cadastro</a></button>
 
-<table *ngIf="tabela" class="ms-5 table table-hover table-dark table-striped table-border mt-5"
+
+<table *ngIf="clientesFiltrados.length > 0" class="ms-5 table table-hover table-dark table-striped table-border mt-5"
   style="max-width: 1280px;">
   <thead>
     <tr>
@@ -20,14 +19,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let c of clientes; index as i">
+    <tr *ngFor="let c of clientesFiltrados">
       <td style="max-width: 150px;">{{c.nome}}</td>
       <td style="max-width: 120px;">{{c.cpf}}</td>
       <td style="max-width: 80px;">{{c.cidade}}</td>
       <td style="max-width: 60px;">{{c.estado}}</td>
       <td class="">
-        <button type="button" value="alterar" (click)="selecionarCliente(c)" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          class=" mt-1 me-2 btn btn-primary">Ver/Editar</button>
+        <button type="button" value="alterar" (click)="selecionarCliente(c)" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" class=" mt-1 me-2 btn btn-primary">Ver/Editar</button>
         <button type="button" value="remover" (click)="deletar(c.id)" class=" mt-1 me-2 btn btn-danger">Deletar</button>
       </td>
     </tr>
