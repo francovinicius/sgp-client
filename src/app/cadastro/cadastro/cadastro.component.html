@@ -1,0 +1,57 @@
+<div class="d-flex flex-column div-center">
+  <h3 class="mt-5 mb-5">Cadastro de Pessoas</h3>
+
+
+  <form class="row g-3 p-1" [formGroup]="form">
+    <div class="col-md-6">
+      <label for="nome" class="form-label">Nome Completo <span class="text-danger">*</span></label>
+      <input [(ngModel)]="cliente.nome" name="nome" formControlName="nome" class="form-control" id="nome" required>
+    </div>
+    <div class="col-md-6">
+      <label for="data_nascimento" class="form-label">Data de Nascimento <span class="text-danger">*</span></label>
+      <input [(ngModel)]="cliente.data_nascimento" name="data_nascimento" formControlName="data_nascimento" type="date" class="form-control" id="data_nascimento" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="cpf" class="form-label">CPF <span class="text-danger">*</span></label>
+      <input [(ngModel)]="cliente.cpf" name="cpf" formControlName="cpf" type="text" class="form-control" id="cpf" required>
+      <div *ngIf="form.get('cpf')?.invalid && form.get('cpf')?.touched" class="text-danger">
+        CPF inválido!
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="cep" class="form-label">CEP <span class="text-danger">*</span></label>
+      <input [(ngModel)]="cliente.cep" name="cep" formControlName="cep" type="text" class="form-control" id="cep" placeholder="" required>
+    </div>
+    <div class="col-12">
+      <label for="logradouro" class="form-label">Logradouro (Rua)</label>
+      <input [(ngModel)]="cliente.logradouro" name="logradouro" formControlName="logradouro" class="form-control" id="logradouro" readonly>
+    </div>
+    <div class="col-12">
+      <label for="numero" class="form-label">Número</label>
+      <input [(ngModel)]="cliente.numero" name="numero" formControlName="numero" class="form-control" id="numero">
+    </div>
+    <div class="col-12">
+      <label for="complemento" class="form-label">Complemento</label>
+      <input [(ngModel)]="cliente.complemento" name="complemento" formControlName="complemento" class="form-control" id="complemento">
+    </div>
+    <div class="col-12">
+      <label for="bairro" class="form-label">Bairro</label>
+      <input [(ngModel)]="cliente.bairro" name="bairro" formControlName="bairro" class="form-control" id="bairro" readonly>
+    </div>
+    <div class="col-md-6">
+      <label for="cidade" class="form-label">Cidade</label>
+      <input [(ngModel)]="cliente.cidade" name="cidade" formControlName="cidade" class="form-control" id="cidade" readonly>
+    </div>
+    <div class="col-md-6">
+      <label for="estado" class="form-label">Estado</label>
+      <input [(ngModel)]="cliente.estado" name="estado" formControlName="estado" class="form-control" id="estado" readonly>
+    </div>
+    <div class="col-12 d-flex">
+      <button type="button" value="cadastrar" (click)="cadastrar()" class="btn btn-dark me-2">Enviar</button>
+      <button class="btn btn-dark"><a class="nav-link" href="/sgp">Voltar</a></button>
+
+    </div>
+  </form>
+</div>
